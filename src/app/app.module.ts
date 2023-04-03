@@ -14,6 +14,8 @@ import { Navbar1Component } from './navbar/navbar.component';
 import { ChathomeComponent } from './chathome/chathome.component';
 import { FormcardComponent } from './formcard/formcard.component';
 import { FormhomeComponent } from './formhome/formhome.component';
+import { LoginComponent } from './login/login.component';
+import { LogupComponent } from './logup/logup.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { FormhomeComponent } from './formhome/formhome.component';
     ChathomeComponent,
     FormcardComponent,
     FormhomeComponent,
+    LoginComponent,
+    LogupComponent,
   ],
   imports: [
     BrowserModule,

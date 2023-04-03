@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(public service:AngularFirestore) { 
+  constructor(public service:AngularFirestore,  public afAuth:AngularFireAuth,
+    public router:Router,) { 
   }
 
   set(){
@@ -43,5 +46,53 @@ export class AuthService {
   }
 
   
+  async SignIn(email:string,password:string)
+  {
+      this.afAuth.signInWithEmailAndPassword(email,password).then((val)=>{
+         this.router.navigate([""]);
+     })
+     .catch((error)=>{
+       window.alert(error.message);
+     })
+  }
+
+  async SignOut()
+  {
+    this.afAuth.signOut().then(()=>{
+     this.router.navigate(['']);
+    });
+  }
+
+  async SignUp(email:string,password:string,user:string)
+  {
+     this.afAuth.createUserWithEmailAndPassword(email,password).then(async (result)=>{   
+     this.SetUserData(result.user,user).then(()=>{window.alert('User Account Registered Successfully!!');this.router.navigate(['']);});
+    })
+    .catch((error)=>{
+      window.alert(error.message);
+    })
+  }
+
+  SetUserData(user:any,person:any){
+    const userRef: AngularFirestoreDocument<any> = this.service.doc(
+      `users/${user.email}`
+    );
+    const userData = {
+      uid: user.email,
+      email: user.email,
+    };
+    return userRef.set(userData, {
+      merge: true,
+    });
+   }   
+
+   async ForgetPass(passowrdResetEmail:string)
+   {
+     return this.afAuth.sendPasswordResetEmail(passowrdResetEmail).then(()=>{
+       window.alert('Password Email Sent!');
+     }).catch((error)=>{
+      window.alert(error);
+     });
+   }
 
 }
