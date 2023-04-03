@@ -1,0 +1,38 @@
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+  }
+  
+  #name{
+    cursor: default;
+    font-size: 42px;
+    font-weight: 500;
+    font-family: 'baron';
+    margin-left: 50px;
+    color: #3b60e8;
+  }
+  
+  .menu-list{
+    margin: 15px 0px 15px 20px;
+  }
+  
+  .menu-list a{
+    margin: 10px 10px;
+    padding: 12px 15px;
+    color: #3b60e8;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  .menu-list a:hover{
+    cursor: pointer;
+    box-shadow: inset 0 0 3px #335beb,
+                inset 0 0 9px #6a85e8,
+                inset 0 0 15px #9fafe8;
+  }

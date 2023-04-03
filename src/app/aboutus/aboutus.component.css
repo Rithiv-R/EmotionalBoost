@@ -1,0 +1,165 @@
+/* CSS code for styling the page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+h1 {
+    font-size: 48px;
+    margin: 0;
+}
+p {
+    font-size: 20px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px;
+}
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    margin: 20px;
+    max-width: 400px;
+    padding: 20px;
+    text-align: center;
+    transition: transform .2s;
+}
+.card:hover {
+    transform: translateY(-10px);
+}
+.card img {
+    border-radius: 50%;
+    max-width: 150px;
+}
+.card h2 {
+    font-size: 32px;
+    margin: 20px 0;
+}
+.card p {
+    font-size: 16px;
+    margin: 0;
+}
+.mission {
+    background-color: #fff;
+    margin: 20px;
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    transition: transform .2s;
+}
+.mission:hover {
+    transform: translateY(-10px);
+}
+.mission h2 {
+    font-size: 48px;
+    margin: 0;
+    padding-bottom: 20px;
+    color: #333;
+}
+.mission p {
+    font-size: 20px;
+    line-height: 1.5;
+    margin: 20px 0;
+    color: #333;
+}
+.team {
+    background-color: #f5f5f5;
+    margin: 20px;
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    transition: transform .2s;
+}
+.team:hover {
+    transform: translateY(-10px);
+}
+.team h2 {
+    font-size: 48px;
+    margin: 0;
+    padding-bottom: 20px;
+    color: #333;
+}
+.team p {
+    font-size: 20px;
+    line-height: 1.5;
+    margin: 20px 0;
+    color: #333;
+}
+.quote {
+    background-color: #333;
+    color: #fff;
+    margin: 20px;
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    transition: transform .2s;
+    }
+    .quote:hover {
+    transform: translateY(-10px);
+    }
+    .quote p {
+    font-size: 32px;
+    margin: 0;
+    padding: 20px;
+    }
+    .quote small {
+    display: block;
+    font-size: 16px;
+    margin: 20px 0;
+    }
+    .cta {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 40px;
+    }
+    .cta h2 {
+    font-size: 48px;
+    margin: 0;
+    padding-bottom: 20px;
+    }
+    .cta p {
+    font-size: 20px;
+    line-height: 1.5;
+    margin: 0;
+    padding-bottom: 20px;
+    }
+    .cta button {
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    color: #333;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    transition: background-color .2s;
+    }
+    .cta button:hover {
+    background-color: #f5f5f5;
+    }
+    footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    }
+    footer p {
+    margin: 0;
+    }
