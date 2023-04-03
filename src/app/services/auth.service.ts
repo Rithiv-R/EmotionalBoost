@@ -63,17 +63,17 @@ export class AuthService {
     });
   }
 
-  async SignUp(email:string,password:string,user:string)
+  async SignUp(email:string,password:string)
   {
      this.afAuth.createUserWithEmailAndPassword(email,password).then(async (result)=>{   
-     this.SetUserData(result.user,user).then(()=>{window.alert('User Account Registered Successfully!!');this.router.navigate(['']);});
+     this.SetUserData(result.user).then(()=>{window.alert('User Account Registered Successfully!!');this.router.navigate(['']);});
     })
     .catch((error)=>{
       window.alert(error.message);
     })
   }
 
-  SetUserData(user:any,person:any){
+  SetUserData(user:any){
     const userRef: AngularFirestoreDocument<any> = this.service.doc(
       `users/${user.email}`
     );

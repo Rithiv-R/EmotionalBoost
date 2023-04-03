@@ -1,7 +1,7 @@
 img{
 	width: 100%;
 }
-.login_box {
+.logup_box {
     width: 1050px;
     height: 600px;
     position: absolute;
@@ -14,13 +14,13 @@ img{
     display: flex;
     overflow: hidden;
 }
-.login_box .left{
+.logup_box .left{
   width: 41%;
   height: 100%;
   padding: 25px 25px;
   
 }
-.login_box .right{
+.logup_box .right{
   width: 59%;
   height: 100%  
 }
