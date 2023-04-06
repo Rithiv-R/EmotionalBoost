@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { GetlistService } from '../services/getlist.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public auth:AuthService) { }
+  constructor(public auth:AuthService,public serv1:GetlistService) { }
 
   ngOnInit(): void {
   }
@@ -22,7 +23,6 @@ export class HomeComponent implements OnInit {
     console.log(current.getHours()+" "+current.getMinutes()+" "+current.getSeconds());
   }
 
-
   check2()
   {
     this.auth.get();
@@ -31,6 +31,10 @@ export class HomeComponent implements OnInit {
   check3()
   {
     this.auth.set();
+  }
+
+  check4()
+  {
   }
 
 }

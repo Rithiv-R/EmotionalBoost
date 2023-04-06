@@ -49,11 +49,11 @@
         <div class="col-sm-4 contacts">
           <div class="contact-table-scroll">
             <table class="table table-hover">
-              <tbody *ngFor="let i of items" (click)="change(i.person)">
+              <tbody *ngFor="let i of items" (click)="change(i.email)">
                 <tr>
-                  <td><img src="assets/p2.jpg" alt="" class="profile-image rounded-circle"></td>
-                  <td>{{i.person}}<br> <small>{{i.last}}</small></td>
-                  <td><small>{{i.time}}</small></td>
+                  <td><img [src]="i.photo" alt="" class="profile-image rounded-circle"></td>
+                  <td>Know:{{i.nickname}}</td>
+                  <td><small>Level:{{i.increment}}</small></td>
                 </tr>
               </tbody>
             </table>

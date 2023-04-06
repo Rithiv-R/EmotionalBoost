@@ -7,6 +7,8 @@
 				<h3>SIGN IN</h3>
 				<input type="email" #email placeholder="EMAIL">
 				<input type="password" #password placeholder="PASSWORD">
+				<p>If you don't have an account!</p>
+				<button (click)="tosignup()">Try Sign-Up</button>
 				<button class="submit" (click)="login(email.value,password.value)">LET'S GO</button>
 			</form>
 		</div>

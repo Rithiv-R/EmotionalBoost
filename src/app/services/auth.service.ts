@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { elementAt } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   constructor(public service:AngularFirestore,  public afAuth:AngularFireAuth,
-    public router:Router,) { 
+    public router:Router,) {
   }
 
   set(){
@@ -45,11 +46,12 @@ export class AuthService {
     });
   }
 
+
   
   async SignIn(email:string,password:string)
   {
       this.afAuth.signInWithEmailAndPassword(email,password).then((val)=>{
-         this.router.navigate([""]);
+         this.router.navigate(["/home"]);
      })
      .catch((error)=>{
        window.alert(error.message);
@@ -66,7 +68,7 @@ export class AuthService {
   async SignUp(email:string,password:string)
   {
      this.afAuth.createUserWithEmailAndPassword(email,password).then(async (result)=>{   
-     this.SetUserData(result.user).then(()=>{window.alert('User Account Registered Successfully!!');this.router.navigate(['']);});
+     this.SetUserData(result.user).then(()=>{window.alert('User Account Registered Successfully!!');this.router.navigate(["/home"]);});
     })
     .catch((error)=>{
       window.alert(error.message);
@@ -79,7 +81,6 @@ export class AuthService {
     );
     const userData = {
       uid: user.email,
-      email: user.email,
     };
     return userRef.set(userData, {
       merge: true,

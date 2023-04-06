@@ -12,4 +12,9 @@ export class FormhomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  calculatescore() {
+    
+    
+  }
+
 }

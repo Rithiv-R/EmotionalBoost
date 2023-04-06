@@ -12,8 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { Navbar1Component } from './navbar/navbar.component';
 import { ChathomeComponent } from './chathome/chathome.component';
-import { FormcardComponent } from './formcard/formcard.component';
 import { FormhomeComponent } from './formhome/formhome.component';
+import { FormcardComponent } from './formcard/formcard.component';
 import { LoginComponent } from './login/login.component';
 import { LogupComponent } from './logup/logup.component';
 

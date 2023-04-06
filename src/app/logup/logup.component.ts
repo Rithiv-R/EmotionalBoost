@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-logup',
@@ -8,7 +9,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class LogupComponent implements OnInit {
 
-  constructor(public authserv:AuthService) { }
+  constructor(public authserv:AuthService,public router:Router) { }
 
   ngOnInit(): void {
   }
@@ -27,7 +28,7 @@ export class LogupComponent implements OnInit {
 
   tosignin()
   {
-    
+    this.router.navigate(['signin']);
   }
 
 }

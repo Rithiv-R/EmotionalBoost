@@ -1,36 +1,48 @@
 .con {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-color: #8458c788;
     padding: 50px;
   }
-  form {
+
+  .card{
     width: 700px;
     margin: 0 auto;
-    padding: 20px;
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
-  h1 {
-    text-align: center;
+
+  form {
     padding: 20px;
-    padding-bottom: 30px;
+  }
+  h1 {
+    background: linear-gradient(212.38deg, rgba(57, 131, 242, 0.7) 0%, rgba(175, 70, 189, 0.71) 100%),url(https://images.unsplash.com/photo-1629836472253-577cb69025bf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZmVlbCUyMGdvb2R8ZW58MHx8MHx8&w=1000&q=80);
+
+    background-position-y: 50%;
+    border-radius: 20px 20px 0px 0px;
+    color: #fff;
+    text-align: center;
+    padding: 50px;
+    
+    font-size: 30px;
+    font-weight: 600;
+    font-family: baron;
   }
   label {
     display: block;
-    font-weight: bold;
-    font-size: 20px;
+    
+    font-size: 18px;
     margin-bottom: 15px;
   }
   input[type="text"],
   textarea {
-    width: 90%;
+    width: 92%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
     margin-bottom: 20px;
-    font-size: 20px;
+    font-size: 18px;
     padding-left: 20px;
     margin-left: 30px;
   }
@@ -38,15 +50,20 @@
     height: 200px;
   }
   input[type="submit"] {
-    background-color: #4CAF50;
+    background-color: #784dd4;
     color: #fff;
     border: none;
     border-radius: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 15px 40px;
+    font-size: 20px;
     cursor: pointer;
     transition: background-color 0.3s;
   }
+  .but{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   input[type="submit"]:hover {
-    background-color: #3e8e41;
+    background-color: #4d28c8;
   }

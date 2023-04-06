@@ -1,26 +1,41 @@
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SetchatService {
-
-  constructor(public service:AngularFirestore) { }
-
-  set(message:any)
-  {
-    this.service.collection("chartroom").doc("rithiv07@gmail.com&ivrith07@gmail.com").collection("messages").add(
+  email:any;
+  constructor(public service:AngularFirestore,public auth:AngularFireAuth) {
+    auth.authState.subscribe(userResponse=>{
+      if(userResponse)
       {
-        'by':'rithiv07@gmail.com',
-        'time':Number(new Date().getTime()),
-        'message':message,
+        this.email = userResponse.email
       }
-    ).then((doc)=>{
-      this.service.collection("chartroom").doc("rithiv07@gmail.com&ivrith07@gmail.com").collection("messages").doc(doc.id).update({
-        'id':doc.id,
+    })
+  }
+
+  set(message:any,counsellor:any)
+  {
+    this.service.collection("chartroom").doc(this.email+"&"+counsellor).set({
+      'user':this.email,
+      'counsellor':counsellor,
+      'id':this.email+"&"+counsellor,
+    }).then(()=>{
+      this.service.collection("chartroom").doc(this.email+"&"+counsellor).collection("messages").add(
+        {
+          'by':this.email,
+          'time':Number(new Date().getTime()),
+          'message':message,
+        }
+      ).then((doc)=>{
+        this.service.collection("chartroom").doc(this.email+"&"+counsellor).collection("messages").doc(doc.id).update({
+          'id':doc.id,
+        })
       })
     });
+   
   }
 
 }

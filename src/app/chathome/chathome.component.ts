@@ -1,6 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GetchatService } from '../services/getchat.service';
 import { SetchatService } from '../services/setchat.service';
+import { GetlistService } from '../services/getlist.service';
+import { AngularFirestore} from '@angular/fire/compat/firestore';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import {distanceBetween} from 'geofire-common' 
+
 
 @Component({
   selector: 'app-chathome',
@@ -10,36 +15,33 @@ import { SetchatService } from '../services/setchat.service';
 export class ChathomeComponent implements OnInit {
 
   selected="";
-  items = [
-    {
-      'person':'ivrith07@gmail.com',
-      'last':'I am Done!',
-      'time':'11.59 Pm',
-    },
-    {
-      'person':'ivrith07@gmail.com',
-      'last':'I am Done!',
-      'time':'11.59 Pm',
-    },
-    {
-      'person':'ivrith07@gmail.com',
-      'last':'I am Done!',
-      'time':'11.59 Pm',
-    },
-  ];
-
+  items:any;
+  lat:any;
+  long:any;
+  email:any;
   messages:any=[];
   @ViewChild('mess') messageinput: any; 
-  constructor(public service1:GetchatService,public service2:SetchatService) {
+  constructor(public service1:GetchatService,public service2:SetchatService,public service3:GetlistService,public service:AngularFirestore,public auth:AngularFireAuth) {
+    navigator.geolocation.getCurrentPosition((position)=>{
+      this.lat = position.coords.latitude;
+      this.long = position.coords.longitude;
+    })
+    auth.authState.subscribe(userResponse=>{
+      if(userResponse)
+      {
+        this.email = userResponse.email
+      }
+    })
   }
 
   ngOnInit(): void {
    this.getter(this.selected);
+   this.getnearby(2);
   }
 
   setter(message:any)
   {
-    this.service2.set(message);
+    this.service2.set(message,this.selected);
     this.messageinput.nativeElement.value="";
   }
 
@@ -58,7 +60,66 @@ export class ChathomeComponent implements OnInit {
   change(val:any)
   {
     this.selected = val;
-    this.getter(this.selected); //To get the chat messages if the user changes the person of contact.
+    this.getter(this.selected);
+  }
+
+  getnearby(current:any)
+  {
+    var dc =this.service.collection<any>('counsellors', ref => ref.orderBy('increment',"desc"));
+    dc.valueChanges().subscribe((val)=>{
+      var temp:any[] = [];
+      val.forEach((element)=>{
+        var t1=distanceBetween([Number(element['lat']), Number(element['long'])], [Number(this.lat),Number(this.long)]);
+        if(current==0)
+        {
+          if(element['increment']==1)
+          {
+            temp.push({'email':element['id'],
+            'distanceInKM':t1,
+            'nickname':element['nickname'],
+            'increment':element['increment'],
+            'photo':element['photo'],
+              }) 
+          }
+        }
+        else if(current==1 || current==2)
+        {
+          if(element['increment']==2)
+          {
+            temp.push({'email':element['id'],
+            'distanceInKM':t1,
+            'nickname':element['nickname'],
+            'increment':element['increment'],
+            'photo':element['photo'],
+              }) 
+          }
+        }
+        else if(current==3 || current==4)
+        {
+          if(element['increment']==3)
+          {
+            temp.push({'email':element['id'],
+            'distanceInKM':t1,
+            'nickname':element['nickname'],
+            'increment':element['increment'],
+            'photo':element['photo'],
+           }) 
+          }
+        }
+       }
+      )
+      var sortedArray: any = temp.sort((n1,n2) => {
+        if (n1.distanceInM > n2.distanceInM) {
+            return 1;
+        }
+        if (n1.distanceInM < n2.distanceInM) {
+            return -1;
+        }
+        return 0;
+        });
+      console.log(sortedArray);
+      this.items = sortedArray;
+    });
   }
 
 }
